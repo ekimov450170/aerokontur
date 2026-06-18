@@ -6,88 +6,104 @@
 
 ```
 aerokontur/
-├── index.html          # Главная страница
+├── index.html              # Главная страница
+├── about.html              # О компании
+├── robots.txt              # Директивы для поисковых роботов
+├── sitemap.xml             # Карта сайта
 ├── css/
-│   └── style.css       # Все стили
+│   └── style.css           # Все стили (токены, компоненты, адаптив)
 ├── js/
-│   └── main.js         # Навигация, анимации, форма
+│   └── main.js             # Навигация, анимации, отправка формы
 ├── assets/
-│   └── icons/          # Сюда добавлять SVG/PNG-иконки
-└── README.md
+│   ├── icons/              # SVG-иконки
+│   └── images/
+│       └── og.png          # Open Graph-изображение (1200×630)
+└── .github/
+    └── workflows/
+        └── deploy.yml      # Авто-деплой на GitHub Pages
 ```
 
 ## Быстрый старт локально
 
-Просто откройте `index.html` в браузере — никаких сборщиков не нужно.
+Откройте `index.html` в браузере — никаких сборщиков не нужно.
 
 ---
 
-## GitHub Pages — публикация сайта
+## Деплой на GitHub Pages (автоматический)
 
-Сайт будет доступен по адресу:
-**`https://ekimov450170.github.io/aerokontur`**
+Сайт публикуется автоматически при каждом `git push` в ветку `main`.  
+Адрес после публикации: **`https://ekimov450170.github.io/aerokontur`**
 
-### Шаг 1 — залить код на GitHub
-
-```bash
-git add .
-git commit -m "initial site"
-git push origin main
-```
-
-### Шаг 2 — включить GitHub Pages
+### Один раз — включить GitHub Actions Pages
 
 1. Откройте репозиторий на GitHub
 2. Перейдите в **Settings → Pages**
-3. В разделе **Source** выберите ветку **`main`**, папку **`/ (root)`**
+3. В разделе **Source** выберите **GitHub Actions** (не «Deploy from branch»)
 4. Нажмите **Save**
 
-Через 1–2 минуты сайт будет доступен по адресу выше.
+После этого любой `git push origin main` запустит workflow `.github/workflows/deploy.yml`  
+и через ~1 минуту обновит сайт.
 
-### Автоматическое обновление
+### Обновить сайт
 
-Каждый раз при `git push origin main` GitHub Pages автоматически пересобирает сайт — деплой занимает около 1 минуты.
+```bash
+# Внесите правки в файлы, затем:
+git add .
+git commit -m "описание изменений"
+git push origin main
+```
+
+Статус деплоя — в разделе **Actions** репозитория.
 
 ---
 
 ## Что нужно заменить перед запуском
 
-| Место                         | Что поменять                          |
-|-------------------------------|---------------------------------------|
-| Все страницы — телефон        | `+7 (495) 220-14-07` → ваш номер     |
-| Footer — email                | `info@aerokontur.ru` → ваш email     |
-| Footer — адрес                | Дербеневская наб., 7 → ваш адрес     |
-| Footer — СРО                  | `№ 0123.45-2011` → ваш номер допуска |
-| Footer — допуск МЧС           | `№ 77-Б/00321` → ваш номер           |
-| `<title>` и `<meta name="description">` в index.html | Уточните описание |
-| Форма (js/main.js)            | Добавьте реальную отправку (EmailJS, Formspree и т.п.) |
+| Место | Что поменять |
+|---|---|
+| Все страницы — телефон | `+7 (495) 220-14-07` → ваш номер |
+| Footer — email | `info@aerokontur.ru` → ваш email |
+| Footer — адрес | Дербеневская наб., 7 → ваш адрес |
+| Footer — СРО | `№ 0123.45-2011` → ваш номер допуска |
+| Footer — допуск МЧС | `№ 77-Б/00321` → ваш номер |
+| `sitemap.xml` | Обновить даты `<lastmod>` при публикации |
+| `assets/images/og.png` | Заменить на реальное изображение (1200×630 px) |
+| Форма `action=` в index.html | Заменить `YOUR_FORM_ID` на ID из Formspree |
+| Карточки объектов | Заменить демо-данные на реальные |
+| Команда в about.html | Заменить имена и роли |
 
-## Подключение реальной отправки формы (Formspree)
+---
+
+## Подключение отправки формы (Formspree)
 
 1. Зарегистрируйтесь на [formspree.io](https://formspree.io)
-2. Создайте форму, получите endpoint вида `https://formspree.io/f/xxxxxxxx`
-3. В `js/main.js` найдите `// Simulate submission` и замените блок:
+2. Создайте новую форму — получите endpoint вида  
+   `https://formspree.io/f/xxxxxxxx`
+3. В `index.html` найдите строку:
+   ```html
+   <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" ...>
+   ```
+   и замените `YOUR_FORM_ID` на ваш ID.
 
-```js
-const data = new FormData(form);
-fetch('https://formspree.io/f/xxxxxxxx', {
-  method: 'POST',
-  body: data,
-  headers: { Accept: 'application/json' }
-}).then(res => {
-  if (res.ok) {
-    submitBtn.textContent = '✓ Заявка отправлена';
-    form.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
-  } else {
-    submitBtn.textContent = 'Ошибка — попробуйте ещё раз';
-    submitBtn.disabled = false;
-  }
-});
+Форма автоматически переключится с режима «тест» на реальную отправку.  
+Письма будут приходить на email, указанный при регистрации в Formspree.
+
+---
+
+## Яндекс.Метрика
+
+Вставьте код счётчика перед `</head>` в `index.html` и `about.html`:
+
+```html
+<!-- Yandex.Metrika -->
+<script type="text/javascript">
+  (function(m,e,t,r,i,k,a){...})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "XXXXXXXX");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" .../></div></noscript>
+<!-- /Yandex.Metrika -->
 ```
 
-## Добавление Яндекс.Метрики
-
-Вставьте код счётчика перед закрывающим тегом `</head>` в `index.html`.
+Замените `XXXXXXXX` на номер вашего счётчика.
 
 ---
 

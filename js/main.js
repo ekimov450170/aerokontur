@@ -34,17 +34,17 @@ if (header) {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
-// ── Contact form validation ────────────────────────────────
-const form      = document.getElementById('contactForm');
+// ── Contact form — Formspree AJAX ─────────────────────────
+const form       = document.getElementById('contactForm');
 const phoneInput = document.getElementById('phone');
 const phoneError = document.getElementById('phoneError');
 const submitBtn  = document.getElementById('submitBtn');
 
 if (form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Reset
+    // Reset validation
     phoneInput.classList.remove('is-invalid');
     phoneError.classList.remove('is-visible');
 
@@ -58,19 +58,41 @@ if (form) {
       return;
     }
 
-    // Simulate submission
     submitBtn.disabled = true;
     submitBtn.textContent = 'Отправляем…';
 
-    setTimeout(() => {
-      submitBtn.textContent = '✓ Заявка отправлена';
-      form.querySelectorAll('input, select, textarea').forEach(el => {
-        el.disabled = true;
-      });
-    }, 900);
+    // Check if Formspree ID is configured
+    const action = form.getAttribute('action') || '';
+    const hasFormspree = action.includes('formspree.io') && !action.includes('YOUR_FORM_ID');
+
+    if (hasFormspree) {
+      try {
+        const data = new FormData(form);
+        const res  = await fetch(action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          submitBtn.textContent = '✓ Заявка отправлена';
+          form.reset();
+        } else {
+          submitBtn.textContent = 'Ошибка — попробуйте ещё раз';
+          submitBtn.disabled = false;
+        }
+      } catch {
+        submitBtn.textContent = 'Нет соединения — попробуйте позже';
+        submitBtn.disabled = false;
+      }
+    } else {
+      // Dev mode: simulate
+      setTimeout(() => {
+        submitBtn.textContent = '✓ Заявка отправлена (тест)';
+        form.querySelectorAll('input, select, textarea').forEach(el => { el.disabled = true; });
+      }, 800);
+    }
   });
 
-  // Live validation clear
   phoneInput.addEventListener('input', () => {
     phoneInput.classList.remove('is-invalid');
     phoneError.classList.remove('is-visible');
