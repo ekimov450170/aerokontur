@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="О компании АЭРОКОНТУР — 15 лет монтажа промышленной и коммерческой вентиляции. Команда, история, допуски, сертификаты.">
+  <title>О компании — АЭРОКОНТУР</title>
+  <link rel="canonical" href="https://ekimov450170.github.io/aerokontur/about.html">
+  <meta property="og:title"       content="О компании — АЭРОКОНТУР">
+  <meta property="og:description" content="15 лет монтажа промышленной вентиляции. Команда инженеров, история, допуски СРО и МЧС.">
+  <meta property="og:image"       content="https://ekimov450170.github.io/aerokontur/assets/images/og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── About-specific ── */
+    .about-hero {
+      background: radial-gradient(ellipse at 80% 0%, #143657 0%, var(--navy) 55%, var(--navy-deep) 100%);
+      color: var(--cyan);
+      padding: 72px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--line-cyan) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line-cyan) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: .15;
+      pointer-events: none;
+    }
+    .about-hero__inner { position: relative; z-index: 2; }
+    .about-hero h1 { color: #fff; font-size: clamp(2.2rem, 4vw, 3.4rem); max-width: 680px; margin: 18px 0 22px; }
+    .about-hero p  { color: var(--cyan-dim); font-size: 1.06rem; max-width: 560px; }
+
+    .timeline { border-left: 2px solid var(--line); margin-left: 20px; }
+    .tl-item  { position: relative; padding: 0 0 36px 36px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -9px; top: 4px;
+      width: 16px; height: 16px;
+      background: var(--orange); border-radius: 0;
+    }
+    .tl-year {
+      font-family: var(--font-mono); font-size: .82rem;
+      color: var(--orange); letter-spacing: .06em; display: block; margin-bottom: 6px;
+    }
+    .tl-item h3 {
+      font-size: 1.05rem; font-family: var(--font-body);
+      font-weight: 700; text-transform: none; letter-spacing: 0; margin-bottom: 8px;
+    }
+    .tl-item p { color: var(--steel); font-size: .9rem; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .team-card { border: 1px solid var(--line); padding: 24px 20px; }
+    .team-avatar {
+      width: 64px; height: 64px;
+      background: var(--navy);
+      border-radius: 0;
+      margin-bottom: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .team-avatar span {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--cyan-dim);
+    }
+    .team-card h3 {
+      font-size: 1rem; font-family: var(--font-body);
+      font-weight: 700; text-transform: none; letter-spacing: 0; margin-bottom: 4px;
+    }
+    .team-role { font-family: var(--font-mono); font-size: .76rem; color: var(--orange); display: block; margin-bottom: 10px; }
+    .team-card p { color: var(--steel); font-size: .86rem; }
+
+    .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .cert-card {
+      border: 1px solid var(--line); padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .cert-card .cert-num {
+      font-family: var(--font-mono); font-size: .78rem;
+      color: var(--steel); letter-spacing: .06em;
+    }
+    .cert-card h3 {
+      font-size: 1.02rem; font-family: var(--font-body);
+      font-weight: 700; text-transform: none; letter-spacing: 0;
+    }
+    .cert-card p { color: var(--steel); font-size: .88rem; }
+    .cert-badge {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: .72rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      border: 1px solid var(--orange); color: var(--orange);
+      padding: 3px 8px; margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .value-card { background: var(--navy); padding: 30px 26px; }
+    .value-card .icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .value-card h3 { font-size: 1rem; font-family: var(--font-body); font-weight: 700; text-transform: none; letter-spacing: 0; color: #fff; margin-bottom: 8px; }
+    .value-card p  { color: var(--cyan-dim); font-size: .9rem; }
+
+    @media (max-width: 980px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .cert-grid { grid-template-columns: 1fr 1fr; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner wrap">
+      <a class="logo" href="index.html">АЭРО<span>КОНТУР</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+        <a href="index.html#services">Услуги</a>
+        <a href="index.html#industries">Отрасли</a>
+        <a href="index.html#process">Процесс</a>
+        <a href="index.html#projects">Объекты</a>
+        <a href="index.html#trust">Гарантии</a>
+        <a href="about.html" aria-current="page">О компании</a>
+        <a href="index.html#contact">Контакты</a>
+      </nav>
+      <div class="header-right">
+        <a class="header-phone mono" href="tel:+74952201407">+7 (495) 220-14-07</a>
+        <a class="btn btn--ghost-light" href="index.html#contact">Заявка на аудит</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="about-hero">
+      <div class="about-hero__inner wrap">
+        <span class="eyebrow">Лист А — о компании</span>
+        <h1>15 лет считаем воздух — не по таблице, а под каждый объект</h1>
+        <p>АЭРОКОНТУР вырос из небольшой монтажной бригады в инжиниринговую компанию полного цикла: от инженерного расчёта до регламентного сервиса. Сегодня в команде 42 специалиста — проектировщики, монтажники, промальпинисты и сервисные инженеры.</p>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section section--paper">
+      <div class="wrap">
+        <div class="pains-grid">
+          <div class="pain-card" style="text-align:center;">
+            <span class="num mono" style="font-size:2rem;display:block;margin-bottom:6px;">120+</span>
+            <h3>объектов сдано</h3>
+            <p>Производства, склады, торговые центры, дата-центры, фарма</p>
+          </div>
+          <div class="pain-card" style="text-align:center;">
+            <span class="num mono" style="font-size:2rem;display:block;margin-bottom:6px;">42</span>
+            <h3>специалиста в штате</h3>
+            <p>Проектировщики, монтажники, промальпинисты, сервисные инженеры</p>
+          </div>
+          <div class="pain-card" style="text-align:center;">
+            <span class="num mono" style="font-size:2rem;display:block;margin-bottom:6px;">2.4 млн</span>
+            <h3>м³/ч воздуха</h3>
+            <p>Суммарная производительность всех смонтированных систем</p>
+          </div>
+          <div class="pain-card" style="text-align:center;">
+            <span class="num mono" style="font-size:2rem;display:block;margin-bottom:6px;">5 лет</span>
+            <h3>гарантия</h3>
+            <p>На все монтажные работы, зафиксированная в договоре</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="section section--steel">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <span class="eyebrow">Лист А.1 — история</span>
+            <h2 class="section-title">Как мы выросли из бригады в инжиниринговую компанию</h2>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">2011</span>
+            <h3>Первые объекты</h3>
+            <p>Начали с монтажа вытяжных систем на небольших производствах в Подмосковье. Три человека, один автомобиль, первый допуск СРО.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">2014</span>
+            <h3>Собственный проектный отдел</h3>
+            <p>Наняли двух инженеров-проектировщиков. Первый раз посчитали аэродинамику сами — без аутсорса. Объёмы выросли вдвое.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">2017</span>
+            <h3>Допуск МЧС, первый ТЦ</h3>
+            <p>Получили допуск на системы противодымной вентиляции. Первый крупный объект — торговый центр 9 000 м² в Подмосковье.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">2020</span>
+            <h3>Фармацевтика и чистые помещения</h3>
+            <p>Вошли в нишу GMP-объектов: чистые помещения ISO 7/8, прецизионное кондиционирование. Первый контракт с фармпроизводителем.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">2023</span>
+            <h3>Дата-центры и промальпинизм</h3>
+            <p>Аттестованная бригада промышленных альпинистов в штате. Первый ЦОД категории Tier III для финансовой компании.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">2026</span>
+            <h3>Сегодня</h3>
+            <p>42 специалиста, 120+ сданных объектов, собственный парк подъёмной техники. Работаем в Москве, Московской области и регионах.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section section--paper">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <span class="eyebrow">Лист А.2 — команда</span>
+            <h2 class="section-title">Те, кто считает и монтирует</h2>
+          </div>
+          <p class="section-sub">Проектировщики, монтажники и инженеры пусконаладки — в одной компании, без передачи задач субподрядчику.</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar"><span>АЕ</span></div>
+            <h3>Алексей Екимов</h3>
+            <span class="team-role">Основатель, главный инженер</span>
+            <p>15 лет в инженерии вентиляции. Автор всех нестандартных технических решений на объектах.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><span>МС</span></div>
+            <h3>Михаил Соловьёв</h3>
+            <span class="team-role">Руководитель проектного отдела</span>
+            <p>10 лет проектирует системы ОВиК. Специализация — промышленные объекты и чистые помещения.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><span>ИК</span></div>
+            <h3>Ирина Козлова</h3>
+            <span class="team-role">Инженер по согласованиям</span>
+            <p>Ведёт прохождение экспертизы и согласование с надзорными органами — МЧС, Роспотребнадзор, СРО.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><span>ДП</span></div>
+            <h3>Денис Петров</h3>
+            <span class="team-role">Прораб монтажного участка</span>
+            <p>12 лет на объектах. Организует монтажные работы без остановки производственного процесса заказчика.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section class="section section--steel">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <span class="eyebrow">Лист А.3 — допуски и сертификаты</span>
+            <h2 class="section-title">Документы, которые подтверждают право на работу</h2>
+          </div>
+        </div>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <span class="cert-num">СРО № 0123.45-2011</span>
+            <h3>Допуск СРО на проектирование</h3>
+            <p>Саморегулируемая организация в области инженерных изысканий и проектирования. Распространяется на проектирование систем ОВиК всех видов.</p>
+            <span class="cert-badge">Действующий</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-num">СРО М № 0456.78-2013</span>
+            <h3>Допуск СРО на монтаж</h3>
+            <p>Допуск на выполнение монтажных работ по разделу ОВиК, в том числе на объектах особого класса опасности и объектах культурного наследия.</p>
+            <span class="cert-badge">Действующий</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-num">МЧС № 77-Б/00321</span>
+            <h3>Лицензия МЧС</h3>
+            <p>Лицензия на монтаж, техническое обслуживание и ремонт систем пожарной безопасности: противодымная вентиляция, системы дымоудаления.</p>
+            <span class="cert-badge">Действующий</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-num">НАКС / Группа IX</span>
+            <h3>Удостоверения НАКС</h3>
+            <p>Сварщики и монтажники аттестованы в Национальном агентстве контроля сварки по группам IX (технологические трубопроводы) и XI (строительные конструкции).</p>
+            <span class="cert-badge">Действующие</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-num">ISO 45001 : 2018</span>
+            <h3>Система управления охраной труда</h3>
+            <p>Сертифицированная СМ ОТ. Все монтажные работы ведутся по утверждённым ППР с обязательным инструктажем на рабочем месте.</p>
+            <span class="cert-badge">Действующий</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-num">Ex-аттестат</span>
+            <h3>Взрывозащищённое исполнение</h3>
+            <p>Аттестат на монтаж и наладку оборудования во взрывоопасных зонах (ATEX / ГОСТ 30852) — сварочные цеха, лакокрасочные участки, склады ЛВЖ.</p>
+            <span class="cert-badge">Действующий</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="section section--dark">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <span class="eyebrow">Лист А.4 — принципы работы</span>
+            <h2 class="section-title">Почему клиенты возвращаются с новыми объектами</h2>
+          </div>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="icon">📐</div>
+            <h3>Сначала расчёт, потом коммерческое предложение</h3>
+            <p>Цена не берётся из прайс-листа. Инженер выезжает на объект, делает замеры и только потом формирует смету — точную, а не «плюс-минус 30%».</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">📋</div>
+            <h3>Смета фиксируется в договоре</h3>
+            <p>Изменение стоимости по ходу монтажа возможно только при изменении технического задания. Никаких доплат «за выезд», «за сложность» или «за материалы».</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">🔧</div>
+            <h3>Один подрядчик — от замера до акта</h3>
+            <p>Не передаём монтаж субподрядчику. Проектировщик и монтажная бригада работают вместе — это исключает нестыковки в проекте и на площадке.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">📊</div>
+            <h3>Замеры после пусконаладки</h3>
+            <p>Акт подписывается после инструментального контроля фактического воздухообмена — не по «теоретической» расчётной таблице проекта.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">🔁</div>
+            <h3>Сервисный договор с фиксированными сроками</h3>
+            <p>Регламентное обслуживание — по графику, без напоминаний с вашей стороны. Предупреждаем о замене расходников заранее, а не постфактум.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">📞</div>
+            <h3>Один контакт на весь цикл</h3>
+            <p>За вашим объектом закреплён персональный инженер. Он знает историю объекта и не переключает вас на «другой отдел».</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section form-section">
+      <div class="wrap" style="text-align:center;max-width:640px;margin:0 auto;">
+        <span class="eyebrow">Следующий шаг</span>
+        <h2 class="section-title" style="color:#fff;margin-bottom:18px;">Расскажите о своём объекте — мы посчитаем воздухообмен бесплатно</h2>
+        <p style="color:var(--cyan-dim);margin-bottom:32px;">Инженер выезжает в день обращения для объектов от 500 м². Смета через 3 рабочих дня.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn--primary" href="index.html#contact">Запросить аудит</a>
+          <a class="btn btn--ghost-dark" href="tel:+74952201407">+7 (495) 220-14-07</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">АЭРО<span>КОНТУР</span></a>
+          <p>Инженерия воздуха для промышленных и коммерческих объектов.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Разделы сайта</h4>
+          <p><a href="index.html#services">Услуги</a></p>
+          <p><a href="index.html#industries">Отрасли</a></p>
+          <p><a href="index.html#projects">Объекты</a></p>
+          <p><a href="about.html">О компании</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <p><a href="tel:+74952201407">+7 (495) 220-14-07</a></p>
+          <p><a href="mailto:info@aerokontur.ru">info@aerokontur.ru</a></p>
+          <p>Москва, Дербеневская наб., 7</p>
+        </div>
+        <div class="footer-col">
+          <h4>Режим работы</h4>
+          <p>Пн–Пт, 9:00–19:00</p>
+          <p>Выезд инженера — в день обращения</p>
+        </div>
+        <div class="footer-col">
+          <h4>Документы</h4>
+          <p>СРО № 0123.45-2011</p>
+          <p>Допуск МЧС № 77-Б/00321</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 АЭРОКОНТУР</span>
+        <span class="mono">Лист А / О компании</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <a class="phone mono" href="tel:+74952201407">+7 (495) 220-14-07</a>
+    <a class="btn btn--primary" href="index.html#contact">Заявка на аудит</a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
