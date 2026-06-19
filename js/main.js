@@ -23,7 +23,7 @@ function sendToTelegram(form) {
   const text =
     '🔧 *Новая заявка с сайта АЭРОКОНТУР*\n\n' +
     `*Имя/компания:* ${get('name') || '—'}\n` +
-    `*Телефон:* ${get('phone') || '—'}\n` +
+        `*Телефон:* ${get('phone') ? '+7' + get('phone') : '—'}\n` +
     `*Тип объекта:* ${get('objType') || '—'}\n` +
     `*Площадь:* ${get('area') || '—'} м²\n` +
     `*Отрасль:* ${get('industry') || '—'}\n` +
@@ -87,7 +87,7 @@ if (form) {
     phoneError.classList.remove('is-visible');
 
     const phone = phoneInput.value.trim();
-    const valid = /[\d\s\-\+\(\)]{7,}/.test(phone);
+        const valid = /^\d{10}$/.test(phone);
 
     if (!valid) {
       phoneInput.classList.add('is-invalid');
