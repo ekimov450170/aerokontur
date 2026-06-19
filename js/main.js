@@ -2,6 +2,45 @@
    АЭРОКОНТУР — main.js
    ============================================================ */
 
+// ── Telegram-уведомления о новых заявках ──────────────────
+// 1. Создайте бота через @BotFather в Telegram → команда /newbot
+// 2. Напишите боту любое сообщение, затем откройте в браузере:
+//    https://api.telegram.org/bot<ВАШ_ТОКЕН>/getUpdates
+//    и найдите "chat":{"id": ЧИСЛО ...} — это и есть chat_id
+// 3. Вставьте оба значения ниже.
+// ⚠️ Никому не показывайте и не публикуйте TELEGRAM_BOT_TOKEN —
+//    это полноценный доступ к вашему боту, как пароль.
+const TELEGRAM_BOT_TOKEN = 8852429167:AAHW3llOLlYFfYVNlzcZxJr7JDFBgDjq5zo
+;
+const TELEGRAM_CHAT_ID   = 318349928;
+
+function sendToTelegram(form) {
+  const isConfigured =
+    TELEGRAM_BOT_TOKEN !== 'YOUR_BOT_TOKEN' && TELEGRAM_CHAT_ID !== 'YOUR_CHAT_ID';
+  if (!isConfigured) return; // тихо пропускаем, пока не настроено
+
+  const get = (name) => (form.querySelector(`[name="${name}"]`)?.value || '').trim();
+
+  const text =
+    '🔧 *Новая заявка с сайта АЭРОКОНТУР*\n\n' +
+    `*Имя/компания:* ${get('name') || '—'}\n` +
+    `*Телефон:* ${get('phone') || '—'}\n` +
+    `*Тип объекта:* ${get('objType') || '—'}\n` +
+    `*Площадь:* ${get('area') || '—'} м²\n` +
+    `*Отрасль:* ${get('industry') || '—'}\n` +
+    `*Комментарий:* ${get('comment') || '—'}`;
+
+  fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: TELEGRAM_CHAT_ID,
+      text,
+      parse_mode: 'Markdown'
+    })
+  }).catch(() => { /* не блокируем отправку формы, даже если телеграм недоступен */ });
+}
+
 // ── Mobile nav toggle ──────────────────────────────────────
 const navToggle = document.getElementById('navToggle');
 const navLinks  = document.getElementById('navLinks');
@@ -60,6 +99,9 @@ if (form) {
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Отправляем…';
+
+    // Telegram-уведомление — отправляется независимо от Formspree
+    sendToTelegram(form);
 
     // Check if Formspree ID is configured
     const action = form.getAttribute('action') || '';
