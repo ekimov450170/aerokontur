@@ -574,3 +574,10 @@ p.lede        { font-size: 1.06rem; color: var(--cyan-dim); max-width: 480px; ma
 @media (max-width: 680px) {
   .projects-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Phone field wrapper ──────────────────────────── */
+.phone-wrap { display: flex; align-items: stretch; }
+.phone-prefix { display: flex; align-items: center; padding: 12px 10px 12px 14px; background: var(--navy-deep); border: 1px solid var(--line-cyan); border-right: none; border-radius: var(--radius) 0 0 var(--radius); color: #fff; font-family: var(--font-body); font-size: .95rem; white-space: nowrap; }
+.phone-wrap input { border-radius: 0 var(--radius) var(--radius) 0; flex: 1; min-width: 0; }
+.phone-wrap input.is-invalid ~ .phone-prefix,
+.phone-wrap input.is-invalid { border-color: #e05555; }
