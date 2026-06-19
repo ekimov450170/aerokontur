@@ -660,7 +660,10 @@
               </div>
               <div class="field">
                 <label for="phone">Телефон <span class="req">*</span></label>
-                <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
+                                <div class="phone-wrap">
+                                                    <span class="phone-prefix">+7</span>
+                                                    <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="(___) ___-__-__" required>
+                                </div>
                 <span class="field-error" id="phoneError">Введите номер телефона</span>
               </div>
               <div class="field">
