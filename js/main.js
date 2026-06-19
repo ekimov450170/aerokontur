@@ -10,8 +10,7 @@
 // 3. Вставьте оба значения ниже.
 // ⚠️ Никому не показывайте и не публикуйте TELEGRAM_BOT_TOKEN —
 //    это полноценный доступ к вашему боту, как пароль.
-const TELEGRAM_BOT_TOKEN = 8852429167:AAHW3llOLlYFfYVNlzcZxJr7JDFBgDjq5zo
-;
+const TELEGRAM_BOT_TOKEN = '8852429167:AAHW3llOLlYFfYVNlzcZxJr7JDFBgDjq5zo';
 const TELEGRAM_CHAT_ID   = 318349928;
 
 function sendToTelegram(form) {
