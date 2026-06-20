@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ekimov450170.github.io/aerokontur/sitemap.xml
+Sitemap: https://unigroup-aero.ru/sitemap.xml

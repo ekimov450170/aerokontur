@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Портфолио АЭРОКОНТУР: реализованные проекты промышленной и коммерческой вентиляции в Москве. Заводы, склады, торговые центры — 120+ объектов, гарантия 5 лет.">
+  <meta name="robots" content="index, follow">
+  <title>Портфолио — реализованные проекты вентиляции | АЭРОКОНТУР</title>
+  <link rel="canonical" href="https://unigroup-aero.ru/portfolio.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Портфолио АЭРОКОНТУР",
+    "description": "Реализованные проекты промышленной и коммерческой вентиляции",
+    "url": "https://unigroup-aero.ru/portfolio.html",
+    "publisher": {"@type": "Organization", "name": "АЭРОКОНТУР"}
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .portfolio-hero { background: var(--navy-deep); color: var(--cyan); padding: 120px 0 64px; }
+    .portfolio-hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); color: #fff; margin-bottom: 16px; }
+    .portfolio-hero .lede { max-width: 560px; }
+    .portfolio-stats { display: flex; gap: 40px; margin-top: 36px; flex-wrap: wrap; }
+    .portfolio-stats .stat { }
+    .portfolio-stats .stat__num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; color: var(--orange); line-height: 1; }
+    .portfolio-stats .stat__label { font-family: var(--font-mono); font-size: .78rem; color: var(--cyan-dim); margin-top: 4px; }
+    .portfolio-body { background: var(--paper); padding: 64px 0 80px; }
+    .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+    .filter-btn { font-family: var(--font-mono); font-size: .8rem; padding: 8px 18px; border: 1px solid var(--line); background: #fff; border-radius: var(--radius); cursor: pointer; transition: all .2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--navy-deep); color: var(--cyan); border-color: var(--navy-deep); }
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; }
+    .case-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .case-card__head { background: var(--navy-deep); padding: 28px; position: relative; }
+    .case-card__icon { width: 48px; height: 48px; background: rgba(220,238,240,.1); border: 1px solid var(--line-cyan); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .case-card__icon svg { width: 24px; height: 24px; }
+    .case-card__tag { font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--orange); margin-bottom: 8px; }
+    .case-card__name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; color: #fff; line-height: 1.1; }
+    .case-card__loc { font-family: var(--font-mono); font-size: .75rem; color: var(--cyan-dim); margin-top: 6px; }
+    .case-card__body { padding: 24px; }
+    .case-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+    .case-spec { }
+    .case-spec__label { font-family: var(--font-mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--steel); margin-bottom: 2px; }
+    .case-spec__val { font-size: .95rem; font-weight: 600; color: var(--navy-deep); }
+    .case-card__desc { font-size: .9rem; color: var(--steel); line-height: 1.55; border-top: 1px solid var(--line); padding-top: 16px; }
+    .case-result { background: rgba(255,90,31,.06); border-left: 3px solid var(--orange); padding: 12px 16px; margin-top: 16px; border-radius: 0 var(--radius) var(--radius) 0; font-size: .88rem; }
+    .case-result strong { color: var(--orange); }
+  </style>
+  <style>
+    .messenger-fab { position: fixed; right: 20px; bottom: 24px; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
+    .fab-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,.25); transition: transform .2s, box-shadow .2s; text-decoration: none; }
+    .fab-btn:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(0,0,0,.35); }
+    .fab-btn--wa { background: #25D366; }
+    .fab-btn--tg { background: #2CA5E0; }
+    .fab-btn svg { width: 26px; height: 26px; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <div class="site-header__inner wrap">
+      <a class="logo" href="index.html">АЭРО<span>КОНТУР</span></a>
+      <nav class="nav-links" aria-label="Основная навигация">
+        <a href="index.html#services">Услуги</a>
+        <a href="index.html#industries">Отрасли</a>
+        <a href="portfolio.html" aria-current="page">Портфолио</a>
+        <a href="blog.html">Статьи</a>
+        <a href="about.html">О компании</a>
+        <a href="index.html#contact">Контакты</a>
+      </nav>
+      <div class="header-right">
+        <a class="header-phone mono" href="tel:+79128324944">+7 (912) 832-49-44</a>
+        <a class="btn btn--ghost-light" href="index.html#contact">Заявка на аудит</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="portfolio-hero">
+    <div class="wrap">
+      <span class="eyebrow">Лист 05 — выполненные объекты</span>
+      <h1>Реализованные проекты</h1>
+      <p class="lede">Промышленная и коммерческая вентиляция под ключ: от заводских цехов до торговых центров и логистических комплексов.</p>
+      <div class="portfolio-stats">
+        <div class="stat"><div class="stat__num">120+</div><div class="stat__label">Объектов сдано</div></div>
+        <div class="stat"><div class="stat__num">15</div><div class="stat__label">Лет на рынке</div></div>
+        <div class="stat"><div class="stat__num">280 000</div><div class="stat__label">М² под обслуживанием</div></div>
+        <div class="stat"><div class="stat__num">5 лет</div><div class="stat__label">Гарантия на системы</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-body">
+    <div class="wrap">
+
+      <div class="filter-bar">
+        <button class="filter-btn active">Все объекты</button>
+        <button class="filter-btn">Производство</button>
+        <button class="filter-btn">Склад / логистика</button>
+        <button class="filter-btn">Торговые центры</button>
+      </div>
+
+      <div class="cases-grid">
+
+        <!-- Завод 1 -->
+        <div class="case-card">
+          <div class="case-card__head">
+            <div class="case-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DCEEF0" stroke-width="1.5"><path d="M3 21V9l5-4 5 4V21"/><path d="M14 21V11h7v10"/><path d="M9 21v-4h6v4"/></svg>
+            </div>
+            <div class="case-card__tag">Производство · Металлообработка</div>
+            <div class="case-card__name">Завод металлоконструкций</div>
+            <div class="case-card__loc">📍 г. Москва, Котельники · 2024 год</div>
+          </div>
+          <div class="case-card__body">
+            <div class="case-specs">
+              <div class="case-spec"><div class="case-spec__label">Площадь</div><div class="case-spec__val">12 400 м²</div></div>
+              <div class="case-spec"><div class="case-spec__label">Производительность</div><div class="case-spec__val">180 000 м³/ч</div></div>
+              <div class="case-spec"><div class="case-spec__label">Срок монтажа</div><div class="case-spec__val">11 недель</div></div>
+              <div class="case-spec"><div class="case-spec__label">Оборудование</div><div class="case-spec__val">KORF / Systemair</div></div>
+            </div>
+            <div class="case-card__desc">Три сварочных цеха + покрасочная камера. Разработали систему местной вытяжки от 48 сварочных постов, аспирацию с циклонами для зачистки и шлифовки, взрывозащищённую вентиляцию покрасочной зоны. Аварийная вентиляция — 8-кратный воздухообмен.</div>
+            <div class="case-result"><strong>Результат:</strong> концентрация сварочного аэрозоля снижена ниже ПДК, объект принят СЭС без замечаний.</div>
+          </div>
+        </div>
+
+        <!-- Завод 2 -->
+        <div class="case-card">
+          <div class="case-card__head">
+            <div class="case-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DCEEF0" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <div class="case-card__tag">Производство · Пищевая промышленность</div>
+            <div class="case-card__name">Кондитерская фабрика</div>
+            <div class="case-card__loc">📍 г. Москва, Зеленоград · 2023 год</div>
+          </div>
+          <div class="case-card__body">
+            <div class="case-specs">
+              <div class="case-spec"><div class="case-spec__label">Площадь</div><div class="case-spec__val">6 800 м²</div></div>
+              <div class="case-spec"><div class="case-spec__label">Производительность</div><div class="case-spec__val">95 000 м³/ч</div></div>
+              <div class="case-spec"><div class="case-spec__label">Срок монтажа</div><div class="case-spec__val">8 недель</div></div>
+              <div class="case-spec"><div class="case-spec__label">Класс чистоты</div><div class="case-spec__val">ISO 7–8</div></div>
+            </div>
+            <div class="case-card__desc">Производство с зонами разных температурных режимов: шоколадный цех (+18°C), карамельный (+20°C), упаковочный (+22°C). Приточные установки с HEPA-фильтрацией, UV-обеззараживанием, системой увлажнения и точным климат-контролем.</div>
+            <div class="case-result"><strong>Результат:</strong> система сертифицирована для производства продуктов питания, класс чистоты подтверждён лабораторией.</div>
+          </div>
+        </div>
+
+        <!-- Склад 1 -->
+        <div class="case-card">
+          <div class="case-card__head">
+            <div class="case-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DCEEF0" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="case-card__tag">Склад · Логистика · Класс A</div>
+            <div class="case-card__name">Логистический комплекс «Новая Москва»</div>
+            <div class="case-card__loc">📍 г. Троицк, Москва · 2025 год</div>
+          </div>
+          <div class="case-card__body">
+            <div class="case-specs">
+              <div class="case-spec"><div class="case-spec__label">Площадь</div><div class="case-spec__val">14 500 м²</div></div>
+              <div class="case-spec"><div class="case-spec__label">Производительность</div><div class="case-spec__val">280 000 м³/ч</div></div>
+              <div class="case-spec"><div class="case-spec__label">Срок монтажа</div><div class="case-spec__val">9 недель</div></div>
+              <div class="case-spec"><div class="case-spec__label">Ворот</div><div class="case-spec__val">24 завесы</div></div>
+            </div>
+            <div class="case-card__desc">Склад класса А с тремя климатическими зонами: рефрижераторная (+4°C), фармацевтическая (+20°C), комплектация (+18°C). 8 центральных ПВУ, 24 тепловые завесы, система дымоудаления на 42 клапана, импульсная вентиляция паркинга.</div>
+            <div class="case-result"><strong>Результат:</strong> экономия на отоплении 1,2 млн руб./год благодаря тепловым завесам и рекуперации.</div>
+          </div>
+        </div>
+
+        <!-- Склад 2 -->
+        <div class="case-card">
+          <div class="case-card__head">
+            <div class="case-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DCEEF0" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="case-card__tag">Склад · Пищевая продукция · Класс A</div>
+            <div class="case-card__name">Холодильный распределительный центр</div>
+            <div class="case-card__loc">📍 г. Москва, Подольск · 2024 год</div>
+          </div>
+          <div class="case-card__body">
+            <div class="case-specs">
+              <div class="case-spec"><div class="case-spec__label">Площадь</div><div class="case-spec__val">8 200 м²</div></div>
+              <div class="case-spec"><div class="case-spec__label">Производительность</div><div class="case-spec__val">120 000 м³/ч</div></div>
+              <div class="case-spec"><div class="case-spec__label">Срок монтажа</div><div class="case-spec__val">7 недель</div></div>
+              <div class="case-spec"><div class="case-spec__label">Температура</div><div class="case-spec__val">+2…+6°C</div></div>
+            </div>
+            <div class="case-card__desc">Склад хранения охлаждённых продуктов. Зонированная вентиляция с охлаждением воздуха через фреоновые конденсаторы, осушители воздуха для предотвращения конденсата, подпор воздуха в экспедиционную зону. Управление от центрального контроллера с журналом параметров.</div>
+            <div class="case-result"><strong>Результат:</strong> сертификация системы для хранения пищевой продукции, температурный режим ±0,5°C.</div>
+          </div>
+        </div>
+
+        <!-- ТЦ 1 -->
+        <div class="case-card">
+          <div class="case-card__head">
+            <div class="case-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DCEEF0" stroke-width="1.5"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"/><line x1="12" y1="12" x2="12" y2="21"/></svg>
+            </div>
+            <div class="case-card__tag">Торговый центр · Районный</div>
+            <div class="case-card__name">ТЦ «Парк Молл», Юго-Запад</div>
+            <div class="case-card__loc">📍 г. Москва, Тропарёво · 2024 год</div>
+          </div>
+          <div class="case-card__body">
+            <div class="case-specs">
+              <div class="case-spec"><div class="case-spec__label">Площадь</div><div class="case-spec__val">7 200 м²</div></div>
+              <div class="case-spec"><div class="case-spec__label">Производительность</div><div class="case-spec__val">160 000 м³/ч</div></div>
+              <div class="case-spec"><div class="case-spec__label">Срок монтажа</div><div class="case-spec__val">14 недель</div></div>
+              <div class="case-spec"><div class="case-spec__label">Клапаны дымоудаления</div><div class="case-spec__val">68 шт.</div></div>
+            </div>
+            <div class="case-card__desc">3 этажа торговых галерей, фудкорт на 400 посадочных мест, подземный паркинг на 180 машиномест. 4 центральных ПВУ с рекуперацией, кухонная вытяжка с жироуловителями, импульсная вентиляция паркинга, полная система дымоудаления.</div>
+            <div class="case-result"><strong>Результат:</strong> сдача ГПН без замечаний, рекуперация сэкономила 900 000 руб./год на отоплении.</div>
+          </div>
+        </div>
+
+        <!-- ТЦ 2 -->
+        <div class="case-card">
+          <div class="case-card__head">
+            <div class="case-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DCEEF0" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="case-card__tag">Торговый центр · Гипермаркет</div>
+            <div class="case-card__name">Гипермаркет строительных материалов</div>
+            <div class="case-card__loc">📍 г. Москва, Домодедово · 2023 год</div>
+          </div>
+          <div class="case-card__body">
+            <div class="case-specs">
+              <div class="case-spec"><div class="case-spec__label">Площадь</div><div class="case-spec__val">18 500 м²</div></div>
+              <div class="case-spec"><div class="case-spec__label">Производительность</div><div class="case-spec__val">320 000 м³/ч</div></div>
+              <div class="case-spec"><div class="case-spec__label">Срок монтажа</div><div class="case-spec__val">16 недель</div></div>
+              <div class="case-spec"><div class="case-spec__label">Высота зала</div><div class="case-spec__val">12 м</div></div>
+            </div>
+            <div class="case-card__desc">Одноэтажный гипермаркет с высотным торговым залом, зоной погрузки и административным блоком. Применены дестратификаторы для перемешивания воздуха по высоте, аэрационные фонари, тепловые завесы на 18 погрузочных воротах, аварийная вентиляция класса В.</div>
+            <div class="case-result"><strong>Результат:</strong> перепад температур по высоте зала не превышает 2°C, экономия электроэнергии на вентиляцию 35% за счёт автоматики.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section form-section" style="padding: 64px 0;">
+    <div class="wrap" style="text-align: center; max-width: 640px; margin: 0 auto;">
+      <span class="eyebrow">Ваш объект — следующий в нашем портфолио</span>
+      <h2 class="section-title" style="color: #fff; margin: 12px 0 20px;">Запросить технический аудит объекта</h2>
+      <p class="lede">Инженер выезжает бесплатно. Через 3 рабочих дня — расчёт воздухообмена и предварительная смета.</p>
+      <a class="btn btn--primary" href="index.html#contact" style="margin-top: 28px;">Оставить заявку</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="index.html">АЭРО<span>КОНТУР</span></a>
+          <p>Инженерия воздуха для промышленных и коммерческих объектов.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Разделы</h4>
+          <p><a href="index.html#services">Услуги</a></p>
+          <p><a href="portfolio.html">Портфолио</a></p>
+          <p><a href="blog.html">Статьи</a></p>
+          <p><a href="about.html">О компании</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Статьи</h4>
+          <p><a href="articles/ventilyaciya-proizvodstvennogo-pomescheniya.html">Вентиляция производства</a></p>
+          <p><a href="articles/ventilyaciya-sklada.html">Вентиляция склада</a></p>
+          <p><a href="articles/ventilyaciya-torgovogo-centra.html">Вентиляция ТЦ</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <p><a href="tel:+79128324944">+7 (912) 832-49-44</a></p>
+          <p><a href="mailto:svarog16@bk.ru">svarog16@bk.ru</a></p>
+          <p>г. Москва, г. Троицк, мкр В, 57</p>
+        </div>
+        <div class="footer-col">
+          <h4>Режим работы</h4>
+          <p>Пн–Пт, 9:00–19:00</p>
+          <p>Выезд инженера — в день обращения</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ООО «Юнигруп» · бренд АЭРОКОНТУР</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <!-- WhatsApp + Telegram FAB -->
+  <div class="messenger-fab" aria-label="Связаться через мессенджер">
+    <a class="fab-btn fab-btn--wa" href="https://wa.me/79128324944" target="_blank" rel="noopener" title="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a class="fab-btn fab-btn--tg" href="https://t.me/aerokontur_msk" target="_blank" rel="noopener" title="Telegram">
+      <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
+  </div>
+</body>
+</html>
